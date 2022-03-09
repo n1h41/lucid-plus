@@ -35,7 +35,9 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(width: size.width * 0.002,),
+                  SizedBox(
+                    width: size.width * 0.002,
+                  ),
                   Text(
                     'Your Tweets',
                     style: TextStyle(
@@ -43,7 +45,12 @@ class HomeScreen extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  IconButton(onPressed: AuthServices().signOut, icon: Icon(Icons.logout, color: Colors.red,))
+                  IconButton(
+                      onPressed: AuthServices().signOut,
+                      icon: Icon(
+                        Icons.logout,
+                        color: Colors.red,
+                      ))
                 ],
               ),
               SizedBox(
@@ -72,15 +79,16 @@ class HomeScreen extends StatelessWidget {
                               e.data() as Map<String, dynamic>, e.id))
                           .toList();
                       tweets.sort((m1, m2) {
-                        var r = m1.createdAt!.compareTo(m2.createdAt!);
-                        if (r != 0) return r;
-                        return m1.createdAt!.compareTo(m2.createdAt!);
+                        return m2.createdAt!
+                            .toInt()
+                            .compareTo(m1.createdAt!.toInt());
                       });
                       return ListView.builder(
                         itemCount: tweets.length,
                         itemBuilder: (context, index) {
                           return Container(
-                            margin: EdgeInsets.symmetric(vertical: size.height * 0.005),
+                            margin: EdgeInsets.symmetric(
+                                vertical: size.height * 0.005),
                             child: Column(
                               children: [
                                 Align(
