@@ -8,23 +8,23 @@ String tweetModelToJson(TweetModel data) => json.encode(data.toJson());
 class TweetModel {
   TweetModel({
     this.tweet,
-    this.createdAt,
+    required this.createdAt,
     this.id,
   });
 
   String? tweet;
-  int? createdAt;
+  final int createdAt;
   String? id;
 
   factory TweetModel.fromJson(Map<String, dynamic> json, String id) => TweetModel(
-        tweet: json["tweet"] == null ? null : json["tweet"],
-        createdAt: json["createdAt"] == null ? null : json["createdAt"],
-        id: id == null ? null : id,
+        tweet: json["tweet"],
+        createdAt: json["createdAt"],
+        id: json["id"],
       );
 
   Map<String, dynamic> toJson() => {
-        "tweet": tweet == null ? null : tweet,
-        "createdAt": createdAt == null ? null : createdAt,
-        "id": id == null ? null : id,
-      };
+        "tweet": tweet,
+        "createdAt": createdAt,
+        "id": id,
+      }..removeWhere((key, value) => value == null);
 }

@@ -77,7 +77,7 @@ class _TweetScreenState extends State<TweetScreen> {
               ],
             ),
           ),
-          bottomNavigationBar: Container(
+          bottomNavigationBar: SizedBox(
             height: size.height * 0.07,
             child: ElevatedButton(
               onPressed: () {
