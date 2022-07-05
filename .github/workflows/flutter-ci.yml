@@ -25,5 +25,5 @@ jobs:
     - name: Create a Release APK
       uses: actions/upload-artifact@v1
       with:
-        name: relee-apk
-        path: build/app/outputs/apk/release/*.apk
+        name: release-apk
+        path: build/app/outputs/apk/release/app-armeabi-v7a-release.apk
