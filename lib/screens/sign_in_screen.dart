@@ -83,6 +83,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 } else if (regExp.hasMatch(value) != true) {
                                   return 'Invalid email';
                                 }
+                                return null;
                               },
                               decoration: InputDecoration(
                                 labelText: 'Email',
@@ -109,13 +110,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                 if (value!.length <= 7) {
                                   return 'Invalid password';
                                 }
+                                return null;
                               },
                               decoration: InputDecoration(
                                 labelStyle:
                                     TextStyle(fontSize: size.height * 0.019),
                                 labelText: 'Password',
                                 prefixIcon: Padding(
-                                  padding:  EdgeInsets.all(size.height * 0.01),
+                                  padding: EdgeInsets.all(size.height * 0.01),
                                   child: Icon(Icons.password),
                                 ),
                                 border: const OutlineInputBorder(
@@ -134,7 +136,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                   showLoading = true;
                                 });
                                 if (_formKey.currentState!.validate() == true) {
-                                  AuthServices().signIn(emailController.text.trim(),
+                                  AuthServices().signIn(
+                                      emailController.text.trim(),
                                       passwdController.text.trim());
                                 }
                                 Future.delayed(

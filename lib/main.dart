@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+// ignore_for_file: unnecessary_const
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,11 +23,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        /* primarySwatch: Colors.blue, */
         fontFamily: 'Poppins',
         primaryColor: primaryColor,
-        scaffoldBackgroundColor: Color(0xfffbfbfb),
-        appBarTheme: AppBarTheme(
+        // hello testing
+        scaffoldBackgroundColor: const Color(0xfffbfbfb),
+        appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(
             color: Colors.black,
           ),
@@ -40,12 +41,13 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: StreamBuilder<User?>(
+        //nihal ivde vanneenu
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: ((context, snapshot) {
           if (snapshot.hasData) {
-            return HomeScreen();
+            return const HomeScreen();
           }
-          return SignInScreen();
+          return const SignInScreen();
         }),
       ),
     );
